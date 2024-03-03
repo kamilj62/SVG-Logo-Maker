@@ -2,9 +2,7 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
 const shapes = require('./lib/document');
-const Circle = require('./lib/circle');
-const Square = require('./lib/square');
-const Triangle = require('./lib/triangle');
+const {Circle, Triangle, Square } = require('./lib/shapes');
 
 
 // TODO: Create an array of questions for user input
@@ -33,20 +31,17 @@ const questions = [
     
 ];
 
-// Function to write README file
+// Function to write file
 function writeToFile(fileName, data) {
     const svg = shapes.shapes(data);
-    let svgString = '';
     let shapeChoice;
         if (data.shape === "Triangle") {
-            shapeChoice = new Triangle();
-            svgString = `<polygon points="150, 18 244, 182 56, 182" fill="${data.color}"/>`;
+            shapeChoice = new Triangle().render(); 
+            console.log(shapeChoice);
         } else if (data.shape === "Square") {
-            shapeChoice = new Square();
-            svgString = `<rect x="73" y="40" width="160" height="160" fill="${data.color}"/>`;
+            shapeChoice = new Square().render();
         } else if (data.shape === 'Circle') {
-            shapeChoice = new Circle();
-            svgString = `<circle cx="150" cy="115" r="80" fill="${data.color}"/>`;
+            shapeChoice = new Circle().render();
         }
 
     fs.writeFile(fileName, svg, function (error) {
