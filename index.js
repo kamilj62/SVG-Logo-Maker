@@ -33,16 +33,18 @@ const questions = [
 
 // Function to write file
 function writeToFile(fileName, data) {
-    const svg = shapes.shapes(data);
     let shapeChoice;
         if (data.shape === "Triangle") {
             shapeChoice = new Triangle().render(); 
-            console.log(shapeChoice);
         } else if (data.shape === "Square") {
             shapeChoice = new Square().render();
         } else if (data.shape === 'Circle') {
             shapeChoice = new Circle().render();
         }
+    data.shapeChoice = shapeChoice;
+    console.log(shapeChoice);
+
+    const svg = shapes.shapes(data);
 
     fs.writeFile(fileName, svg, function (error) {
         if (error) {
