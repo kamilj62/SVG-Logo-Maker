@@ -35,11 +35,11 @@ const questions = [
 function writeToFile(fileName, data) {
     let shapeChoice;
         if (data.shape === "Triangle") {
-            shapeChoice = new Triangle().render(); 
+            shapeChoice = new Triangle(data.shapeColor).render(); 
         } else if (data.shape === "Square") {
-            shapeChoice = new Square().render();
+            shapeChoice = new Square(data.shapeColor).render();
         } else if (data.shape === 'Circle') {
-            shapeChoice = new Circle().render();
+            shapeChoice = new Circle(data.shapeColor).render();
         }
     data.shapeChoice = shapeChoice;
     console.log(shapeChoice);
